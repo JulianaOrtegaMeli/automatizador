@@ -37,3 +37,4 @@ client:
       - fruitsaudits
       - audits-test-v1
       - audits-test
+  fruits-kvs: fruits-kvs

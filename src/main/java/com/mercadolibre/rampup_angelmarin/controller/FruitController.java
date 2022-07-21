@@ -22,8 +22,8 @@ public class FruitController {
     @PostMapping(value = "/create")
     public ResponseEntity<FruitResponseDTO> createFruit(@RequestHeader("owner") String owner, @Valid @RequestBody FruitRequestDTO request) throws Exception {
         {
-            FruitResponseDTO frutaCreada = service.create(owner, request);
-            return new ResponseEntity(frutaCreada, HttpStatus.CREATED);
+            FruitResponseDTO fruit = service.create(owner, request);
+            return new ResponseEntity(fruit, HttpStatus.CREATED);
         }
     }
 }

@@ -19,7 +19,7 @@ public class KvsService {
     private ObjectMapper objectMapper;
 
     private ContainerKvsLowLevelClient kvs;
-    String containerName = System.getenv("fruits-kvs");
+    String containerName = System.getenv("KEY_VALUE_STORE_FRUITS_KVS_CONTAINER_NAME");
 
     public void registrarDatoKvs(FruitResponseDTO response) {
 
@@ -29,7 +29,7 @@ public class KvsService {
                 .withConnectionTimeout(100)
                 .withMaxConnections(30)
                 .withMaxConnectionsPerRoute(30)
-                .withMaxRetries(1)
+                 .withMaxRetries(1)
                 .withRetryDelay(30)
                 .build();
 
@@ -40,7 +40,7 @@ public class KvsService {
             Item item = new Item();
             item.setKey(response.getUuid());
             item.setValue(value);
-            item.setTtl(10);
+            item.setTtl(1011111);
 
             kvs.save(item);
 
