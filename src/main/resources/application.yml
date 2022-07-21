@@ -27,3 +27,13 @@ app:
   title: rampup-angelmarin
   description: '@project.description@'
   version: @project.version@
+
+
+client:
+  audits:
+    timeout: 300
+    retries: 0
+    audit-names:
+      - fruitsaudits
+      - audits-test-v1
+      - audits-test

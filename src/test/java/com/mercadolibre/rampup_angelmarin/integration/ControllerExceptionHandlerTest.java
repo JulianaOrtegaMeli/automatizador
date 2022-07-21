@@ -1,8 +1,5 @@
 package com.mercadolibre.rampup_angelmarin.integration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doThrow;
-
 import com.mercadolibre.rampup_angelmarin.controller.PingController;
 import com.mercadolibre.rampup_angelmarin.exceptions.ApiError;
 import com.mercadolibre.rampup_angelmarin.exceptions.ApiException;
@@ -11,6 +8,9 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doThrow;
 
 class ControllerExceptionHandlerTest extends ControllerTest {
 
