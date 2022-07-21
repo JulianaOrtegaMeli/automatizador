@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class DSService {
 
-    String nameDS = System.getenv("DOCUMENT_SEARCH_FRUITS_KVS_DS_NAMESPACE");
+    String nameDS = System.getenv("DOCUMENT_SEARCH_FRUITS_KVS-DS_NAMESPACE");
 
     public ResponseDTO search(String name, String status, Integer limit, Integer offset) throws DsClientException {
         DsClientConfiguration conf = DsClientConfiguration.builder()
