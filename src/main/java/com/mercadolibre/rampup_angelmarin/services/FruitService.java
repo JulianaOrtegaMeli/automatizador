@@ -2,13 +2,16 @@ package com.mercadolibre.rampup_angelmarin.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.mercadolibre.credits.consumer.Collector;
+import com.mercadolibre.dsclient.exception.DsClientException;
 import com.mercadolibre.rampup_angelmarin.dtos.FruitRequestDTO;
 import com.mercadolibre.rampup_angelmarin.dtos.FruitResponseDTO;
+import com.mercadolibre.rampup_angelmarin.dtos.ResponseDTO;
 import com.mercadolibre.rampup_angelmarin.metrics.MetricData;
 import com.mercadolibre.rampup_angelmarin.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.*;
 
 import static com.mercadolibre.rampup_angelmarin.metrics.DatadogMetricName.CREATE_FRUIT;
@@ -17,6 +20,8 @@ import static com.mercadolibre.rampup_angelmarin.metrics.MetricData.EVENT_CREATE
 @Service
 public class FruitService {
 
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(FruitService.class);
     @Autowired
     private KvsService kvsService;
 
@@ -25,6 +30,10 @@ public class FruitService {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+
+    @Autowired
+    private DSService dsService;
 
     //private Collector metricCollector;
 
@@ -63,6 +72,19 @@ public class FruitService {
 
 
         //metricCollector.incrementCounter(CREATE_FRUIT.getName(), MetricData.buildCreateFruitTags("MLC", EVENT_CREATE_FRUIT));
+
+        return response;
+    }
+
+
+    public ResponseDTO searchFruit(String name, String status, Integer limit, Integer offset){
+        ResponseDTO response = null;
+        try {
+            response = dsService.search(name, status, limit, offset);
+        } catch (DsClientException e) {
+            LOGGER.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
 
         return response;
     }

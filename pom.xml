@@ -283,7 +283,11 @@
             <groupId>com.mercadolibre</groupId>
             <artifactId>kvsclient</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.mercadolibre</groupId>
+            <artifactId>dsclient</artifactId>
+            <version>4.0.0</version>
+        </dependency>
 
         <!-- Test dependencies for all projects -->
         <dependency>
@@ -311,16 +315,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>com.mercadolibre.restclient</groupId>
-            <artifactId>restclient-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mercadolibre.restclient</groupId>
-            <artifactId>restclient-core</artifactId>
-            <scope>test</scope>
-        </dependency>-->
+
     </dependencies>
 
     <repositories>
