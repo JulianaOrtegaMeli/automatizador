@@ -9,10 +9,7 @@ import com.mercadolibre.rampup_angelmarin.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.mercadolibre.rampup_angelmarin.metrics.DatadogMetricName.CREATE_FRUIT;
 import static com.mercadolibre.rampup_angelmarin.metrics.MetricData.EVENT_CREATE_FRUIT;
@@ -31,7 +28,8 @@ public class FruitService {
 
     //private Collector metricCollector;
 
-    public FruitResponseDTO create(String owner, FruitRequestDTO request) throws Exception{
+    public FruitResponseDTO create(String owner, FruitRequestDTO request) throws Exception {
+
 
         String res = Util.validateFruit(request.getName(), owner);
         String uuid = Util.generateUUID();
@@ -44,14 +42,25 @@ public class FruitService {
         response.setLastUpdate(new Date());
         response.setStatus("comestible");
 
-        //Kvs save
-        kvsService.registrarDatoKvs(response);
-
-        //Audit save
         List<String> tags = Arrays.asList("save-audit-async");
-
         Map<String, Object> data = objectMapper.convertValue(response, Map.class);
         auditService.createAudit(response.getUuid(), data, tags);
+
+
+        try {
+            kvsService.registrarDatoKvs(response);
+        } catch (
+                Exception e
+        ) {
+
+            Map<String, Object> dataa = new HashMap<String, Object>();
+            dataa.put("error", e.toString());
+            auditService.createAudit(response.getUuid(), dataa, tags);
+
+            throw e;
+        }
+        //Kvs save
+
 
         //metricCollector.incrementCounter(CREATE_FRUIT.getName(), MetricData.buildCreateFruitTags("MLC", EVENT_CREATE_FRUIT));
 

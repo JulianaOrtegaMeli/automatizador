@@ -4,6 +4,7 @@ import com.mercadolibre.auditclient.auditapi.AuditApiConfiguration;
 import com.mercadolibre.auditclient.auditapi.AuditClient;
 import com.mercadolibre.auditclient.auditapi.AuditRecord;
 import com.mercadolibre.auditclient.exceptions.AuditException;
+import com.mercadolibre.restclient.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,21 +21,10 @@ public class AuditService {
     public static final Integer MAX_RETRIES = 2;
 
     public void createAudit(String uuid, Map<String, Object> data, List<String> tags){
-
-      /*
         AuditRecord auditRecord;
 
         AuditApiConfiguration config = AuditApiConfiguration.builder()
-                .withTimeout(TIMEOUT)
-                .withRetries(MAX_RETRIES)
                 .build();
-
-        String config2 = AuditApiConfiguration.builder()
-                .withTimeout(TIMEOUT)
-                .withRetries(MAX_RETRIES)
-                .build().getEndpoint("fruitsaudits", "rampup-angely-blanco");
-
-        System.out.println("config2" + config2);
 
         AuditClient client = new AuditClient(config, "fruitsaudits");
 
@@ -44,16 +34,14 @@ public class AuditService {
         auditRecord.setTags(tags);
 
         try {
-            CompletableFuture<com.mercadolibre.restclient.Response> future = client.saveAuditAsync(auditRecord);
+            /*CompletableFuture<com.mercadolibre.restclient.Response> future = client.saveAuditSync(auditRecord);
             future.thenAcceptAsync(response -> LOGGER.info("Save Audit Create Fruit", response)).exceptionally(ex -> {
                 LOGGER.error("Error Save Audit Create Fruit", ex);
                 return null;
-            });
-        } catch (AuditException e) {
+            });*/
+            Response responseSave = client.saveAuditSync(auditRecord);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
-       */
     }
 }
