@@ -10,13 +10,13 @@
     </parent>
 
     <groupId>com.mercadolibre</groupId>
-    <artifactId>rampup-angelmarin</artifactId>
+    <artifactId>rampup-angely-blanco</artifactId>
 
     <version>last</version>
     <packaging>jar</packaging>
 
-    <name>rampup-angelmarin</name>
-    <description>rampup-angelmarin</description>
+    <name>rampup-angely-blanco</name>
+    <description>rampup-angely-blanco</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -244,14 +244,6 @@
             <artifactId>json-jackson</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.mercadolibre.credits</groupId>
-            <artifactId>metrics-collector</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-
-
-
         <!-- External application dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -272,11 +264,6 @@
             <artifactId>jackson-module-blackbird</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.13.3</version>
-        </dependency>
-        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
         </dependency>
@@ -285,19 +272,12 @@
             <artifactId>newrelic-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.mercadolibre.restclient</groupId>
+            <artifactId>restclient-core</artifactId>
+        </dependency>
+       <dependency>
             <groupId>com.mercadolibre</groupId>
             <artifactId>auditclient</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mercadolibre.restclient</groupId>
-            <artifactId>restclient-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mercadolibre.restclient</groupId>
-            <artifactId>restclient-core</artifactId>
-            <classifier>tests</classifier>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mercadolibre</groupId>
@@ -327,13 +307,20 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.mercadolibre</groupId>
-            <artifactId>auditclient</artifactId>
-            <version>2.0.0</version>
-            <classifier>tests</classifier>
-            <type>test-jar</type>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--<dependency>
+            <groupId>com.mercadolibre.restclient</groupId>
+            <artifactId>restclient-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mercadolibre.restclient</groupId>
+            <artifactId>restclient-core</artifactId>
+            <scope>test</scope>
+        </dependency>-->
     </dependencies>
 
     <repositories>

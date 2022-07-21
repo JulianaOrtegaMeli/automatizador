@@ -20,6 +20,8 @@ public class AuditService {
     public static final Integer MAX_RETRIES = 2;
 
     public void createAudit(String uuid, Map<String, Object> data, List<String> tags){
+
+      /*
         AuditRecord auditRecord;
 
         AuditApiConfiguration config = AuditApiConfiguration.builder()
@@ -50,5 +52,8 @@ public class AuditService {
         } catch (AuditException e) {
             throw new RuntimeException(e);
         }
+
+
+       */
     }
 }

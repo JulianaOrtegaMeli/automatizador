@@ -1,7 +1,7 @@
 package com.mercadolibre.rampup_angelmarin.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mercadolibre.credits.consumer.Collector;
+//import com.mercadolibre.credits.consumer.Collector;
 import com.mercadolibre.rampup_angelmarin.dtos.FruitRequestDTO;
 import com.mercadolibre.rampup_angelmarin.dtos.FruitResponseDTO;
 import com.mercadolibre.rampup_angelmarin.metrics.MetricData;
@@ -29,7 +29,7 @@ public class FruitService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private Collector metricCollector;
+    //private Collector metricCollector;
 
     public FruitResponseDTO create(String owner, FruitRequestDTO request) throws Exception{
 
@@ -53,7 +53,7 @@ public class FruitService {
         Map<String, Object> data = objectMapper.convertValue(response, Map.class);
         auditService.createAudit(response.getUuid(), data, tags);
 
-        metricCollector.incrementCounter(CREATE_FRUIT.getName(), MetricData.buildCreateFruitTags("MLC", EVENT_CREATE_FRUIT));
+        //metricCollector.incrementCounter(CREATE_FRUIT.getName(), MetricData.buildCreateFruitTags("MLC", EVENT_CREATE_FRUIT));
 
         return response;
     }
