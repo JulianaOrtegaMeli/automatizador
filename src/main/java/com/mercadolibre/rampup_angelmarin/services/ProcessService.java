@@ -49,6 +49,10 @@ public class ProcessService {
         .sequential()
         .forEach(
             fileToRead -> {
+              if (fileToRead.isDirectory()) {
+                return;
+              }
+
               File file = getFile(fileToRead);
 
               List<PrioritiesEnum> prioritiesList = formatPriorities(file);
@@ -64,9 +68,7 @@ public class ProcessService {
 
                 String output = new GeneratorJsonUtils(input).generateJsonFile();
 
-                createFileOut(
-                    workDirectory,
-                    input);
+                createFileOut(workDirectory, input, output);
                 //  return ResponseEntity.ok(output);
               } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -76,22 +78,25 @@ public class ProcessService {
     return null;
   }
 
-  private void createFileOut(String pathOut, FileInputDTO input) {
+  private void createFileOut(String workDirectory, FileInputDTO input, String outJson) {
+
+    String pathSalida = workDirectory + "/salida/";
+    java.io.File folder = new java.io.File(pathSalida);
+
+    if (!folder.exists()) {
+      folder.mkdir();
+    }
+
+    String nameFileOut =
+        String.format("%s%s", input.getFile().getName().replace(".xlsx", ""), "_JSONGENERADO.json");
 
     try (PrintWriter out =
         new PrintWriter(
             new OutputStreamWriter(
-                Files.newOutputStream(
-                    Paths.get(
-                        pathOut
-                            + "/"
-                            + String.format(
-                                "%s%s",
-                                input.getFile().getName().replace(".xlsx", ""),
-                                "_JSONGENERADO.json"))),
+                Files.newOutputStream(Paths.get(String.format("%s%s", pathSalida, nameFileOut))),
                 StandardCharsets.UTF_8))) {
-      if (pathOut != null) {
-        out.write(pathOut);
+      if (outJson != null) {
+        out.write(outJson);
       }
     } catch (Exception e) {
       log.error("ERROR GENERANDO SALIDA>>>>VER LOG" + e.getMessage());
@@ -119,22 +124,63 @@ public class ProcessService {
   private File getFile(java.io.File contents) {
 
     if (!contents.getName().substring(contents.getName().lastIndexOf(".") + 1).equals("xlsx")) {
-      throw new IllegalArgumentException("El archivo debe ser extension xlsx");
+      throw new IllegalArgumentException(
+          String.format("El archivo \"%s\" debe ser extension .xlsx", contents.getName()));
     }
 
     String[] fileCompose = contents.getName().replace(".xlsx", "").split("_");
     if (fileCompose.length != 3) {
       throw new IllegalArgumentException(
-          "El nombre del file no es valido ejemplo MLA_TOP-SNEAKERS_P0-P1.xlsx");
+          String.format(
+              "El nombre \"%s\" del file no es valido ejemplo MLA_PANT1-SNEKEARS_P0-P1.xlsx asegurate que este bien nombrado el file",
+              contents.getName()));
     }
 
-    return File.builder()
-        .nameFile(contents.getName())
-        .site(fileCompose[0])
-        .domains(Arrays.asList(fileCompose[1].split("-")))
-        .priorities(Arrays.asList(fileCompose[2].split("-")))
-        .contents(contents)
-        .build();
+    File file =
+        File.builder()
+            .nameFile(contents.getName())
+            .site(fileCompose[0])
+            .domains(Arrays.asList(fileCompose[1].split("-")))
+            .priorities(Arrays.asList(fileCompose[2].split("-")))
+            .contents(contents)
+            .build();
+
+    validateFile(file);
+
+    return file;
+  }
+
+  private void validateFile(File file) {
+
+    List<String> listWhite =
+        Arrays.asList(
+            "SNEAKERS",
+            "BOOTS_AND_BOOTIES",
+            "LOAFERS_AND_OXFORDS",
+            "FOOTBALL_SHOES",
+            "SANDALS_AND_CLOGS",
+            "PANTS",
+            "T_SHIRTS",
+            "JACKETS_AND_COATS",
+            "DRESSES",
+            "SWEATSHIRTS_AND_HOODIES",
+            "SHORTS",
+            "BRAS",
+            "BLOUSES",
+            "SHIRTS",
+            "LEGGINGS",
+            "UNDERPANTS",
+            "PANTIES",
+            "SOCKS",
+            "PAJAMAS");
+
+    if (file.getDomains().stream()
+        .anyMatch(domain -> listWhite.stream().noneMatch(list -> list.equals(domain)))) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Existe algun dominio configurado en el nombre del file %s no estan permitidos en el automatizador, dominios permitidos-> %s",
+              file.getNameFile(), listWhite.toString()));
+    }
   }
 }
 

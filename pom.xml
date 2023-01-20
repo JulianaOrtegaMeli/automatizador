@@ -43,8 +43,13 @@
         <system-stubs.version>1.2.0</system-stubs.version>
     </properties>
 
+
+
+
     <build>
         <finalName>application</finalName>
+
+       <!--
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -71,6 +76,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        -->
         <pluginManagement>
             <plugins>
                 <plugin>
