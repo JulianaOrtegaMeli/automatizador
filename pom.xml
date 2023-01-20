@@ -191,6 +191,9 @@
     <dependencyManagement>
         <dependencies>
             <!-- External dependencies -->
+
+
+
             <dependency>
                 <groupId>org.ow2.asm</groupId>
                 <artifactId>asm</artifactId>
@@ -222,10 +225,27 @@
                 <artifactId>system-stubs-jupiter</artifactId>
                 <version>${system-stubs.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.mercadolibre</groupId>
+                <artifactId>fashion-validator-plugin</artifactId>
+                <version>0.0.46-test</version>
+                <scope>runtime</scope>
+            </dependency>
+
         </dependencies>
+
+
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- Internal application dependencies -->
         <dependency>
             <groupId>com.mercadolibre.metrics</groupId>
@@ -314,6 +334,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mercadolibre</groupId>
+            <artifactId>fashion-validator-plugin</artifactId>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
