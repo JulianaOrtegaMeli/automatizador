@@ -103,7 +103,7 @@ public class ProcessService {
     }
 
     for (String domain : file.getDomains()) {
-      String nameFileOut = String.format("%s_%s_%s", file.getSite(), domain, "JSONGENERADO.json");
+      String nameFileOut = String.format("%s|%s|%s", file.getSite(), domain, "JSONGENERADO.json");
       try (PrintWriter out =
           new PrintWriter(
               new OutputStreamWriter(
@@ -143,7 +143,8 @@ public class ProcessService {
           String.format("El archivo \"%s\" debe ser extension .xlsx", contents.getName()));
     }
 
-    String[] fileCompose = contents.getName().replace(".xlsx", "").split("_");
+    String[] fileCompose = contents.getName().replace(".xlsx", "").toString().split("\\|");
+
     if (fileCompose.length != 3) {
       throw new IllegalArgumentException(
           String.format(
@@ -188,7 +189,8 @@ public class ProcessService {
             "PANTIES",
             "SOCKS",
             "PAJAMAS",
-            "TESTDOMAIN");
+            "TESTDOMAIN"
+);
 
     if (file.getDomains().stream()
         .anyMatch(domain -> listWhite.stream().noneMatch(list -> list.equals(domain)))) {
@@ -298,11 +300,11 @@ public class ProcessService {
           String.format("El archivo \"%s\" debe ser extension .json", contents.getName()));
     }
 
-    String[] fileCompose = contents.getName().replace("_JSONGENERADO.json", "").split("_");
+    String[] fileCompose = contents.getName().replace("|JSONGENERADO.json", "").split("\\|");
     if (fileCompose.length != 2) {
       throw new IllegalArgumentException(
           String.format(
-              "El nombre \"%s\" del file no es valido: ejemplo MLA_SNEAKERS_JSONGENERADO.json asegurate que este bien nombrado el file",
+              "El nombre \"%s\" del file no es valido: ejemplo MLA|SNEAKERS|JSONGENERADO.json asegurate que este bien nombrado el file",
               contents.getName()));
     }
 
