@@ -4,7 +4,6 @@ import com.mercadolibre.rampup_angelmarin.services.ProcessService;
 import java.io.IOException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,13 +20,22 @@ public class ProcessGDT {
     this.process = process;
   }
 
-  @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  @PostMapping(value = "/generateConfig", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<?> uploadFile(
       @RequestParam("scope") String scope,
       @RequestParam("fileConfigGender") MultipartFile fileConfigGender,
       @RequestParam("fileConfigAge") MultipartFile fileConfigAge,
       @RequestParam("workDirectory") String workDirectory)
       throws IOException {
-    return process.upload(scope, fileConfigGender, fileConfigAge, workDirectory);
+    return process.generate(scope, fileConfigGender, fileConfigAge, workDirectory);
+  }
+
+  @PostMapping(value = "/uploadConfigToServer", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  public ResponseEntity<?> uploadFile(
+      @RequestParam("scope") String scope,
+      @RequestParam("workDirectory") String workDirectory,
+      @RequestParam("xClientId") String xClientId)
+      throws IOException {
+    return process.uploadFiles(scope, workDirectory, xClientId);
   }
 }

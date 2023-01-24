@@ -1,0 +1,293 @@
+{
+    "available_filters": [
+        {
+            "id": "state",
+            "name": "Ubicación",
+            "type": "text",
+            "values": [
+                {
+                    "id": "TUxBUENBUGw3M2E1",
+                    "name": "Capital Federal",
+                    "results": 63
+                },
+                {
+                    "id": "TUxBUEdSQWU4ZDkz",
+                    "name": "Bs.As. G.B.A. Norte",
+                    "results": 17
+                },
+                {
+                    "id": "TUxBUEdSQWVmNTVm",
+                    "name": "Bs.As. G.B.A. Oeste",
+                    "results": 14
+                }
+            ]
+        },
+        {
+            "id": "official_store",
+            "name": "Tiendas oficiales",
+            "type": "text",
+            "values": [
+                {
+                    "id": "2004",
+                    "name": "Kolors Odinroxs",
+                    "results": 31
+                },
+                {
+                    "id": "1470",
+                    "name": "Heburn",
+                    "results": 16
+                },
+                {
+                    "id": "100",
+                    "name": "Las Margaritas",
+                    "results": 9
+                },
+                {
+                    "id": "1438",
+                    "name": "Thuya",
+                    "results": 3
+                },
+                {
+                    "id": "2647",
+                    "name": "CyP",
+                    "results": 3
+                },
+                {
+                    "id": "2639",
+                    "name": "Meline",
+                    "results": 2
+                },
+                {
+                    "id": "945",
+                    "name": "Gadnic",
+                    "results": 2
+                }
+            ]
+        },
+        {
+            "id": "discount",
+            "name": "Descuentos",
+            "type": "number",
+            "values": [
+                {
+                    "id": "10-100",
+                    "name": "Desde 10% OFF",
+                    "results": 52
+                },
+                {
+                    "id": "15-100",
+                    "name": "Desde 15% OFF",
+                    "results": 20
+                },
+                {
+                    "id": "20-100",
+                    "name": "Desde 20% OFF",
+                    "results": 12
+                },
+                {
+                    "id": "25-100",
+                    "name": "Desde 25% OFF",
+                    "results": 4
+                },
+                {
+                    "id": "30-100",
+                    "name": "Desde 30% OFF",
+                    "results": 1
+                }
+            ]
+        },
+        {
+            "id": "price",
+            "name": "Precio",
+            "type": "range",
+            "values": [
+                {
+                    "id": "*-1000.0",
+                    "name": "Hasta $ 1.000",
+                    "results": 10
+                },
+                {
+                    "id": "1000.0-2000.0",
+                    "name": "$1.000 a $2.000",
+                    "results": 30
+                },
+                {
+                    "id": "2000.0-*",
+                    "name": "Más de $2.000",
+                    "results": 26
+                }
+            ]
+        },
+        {
+            "id": "accepts_mercadopago",
+            "name": "Filtro por MercadoPago",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Con MercadoPago",
+                    "results": 66
+                }
+            ]
+        },
+        {
+            "id": "installments",
+            "name": "Pago",
+            "type": "text",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "En cuotas",
+                    "results": 66
+                },
+                {
+                    "id": "no_interest",
+                    "name": "Sin interés",
+                    "results": 6
+                }
+            ]
+        },
+        {
+            "id": "shipping",
+            "name": "Tipo de entrega",
+            "type": "text",
+            "values": [
+                {
+                    "id": "mercadoenvios",
+                    "name": "Con envío",
+                    "results": 66
+                },
+                {
+                    "id": "fulfillment",
+                    "name": "Full",
+                    "results": 4
+                }
+            ]
+        },
+        {
+            "id": "power_seller",
+            "name": "Filtro por calidad de vendedores",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Mejores vendedores",
+                    "results": 66
+                }
+            ]
+        },
+        {
+            "id": "has_pictures",
+            "name": "Filtro por publicaciones con imágenes",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Con fotos",
+                    "results": 66
+                }
+            ]
+        },
+        {
+            "id": "price_campaign_id",
+            "name": "Campaña",
+            "type": "number",
+            "values": [
+                {
+                    "id": "MLA2312",
+                    "name": "MLA2312",
+                    "results": 46
+                },
+                {
+                    "id": "MLA27510",
+                    "name": "MLA27510",
+                    "results": 3
+                },
+                {
+                    "id": "MLA3411",
+                    "name": "MLA3411",
+                    "results": 2
+                },
+                {
+                    "id": "MLA25649",
+                    "name": "MLA25649",
+                    "results": 1
+                }
+            ]
+        },
+        {
+            "id": "shipping_cost",
+            "name": "Costo de envío",
+            "type": "text",
+            "values": [
+                {
+                    "id": "free",
+                    "name": "Gratis",
+                    "results": 9
+                }
+            ]
+        },
+        {
+            "id": "BRAND",
+            "name": "Marca",
+            "type": "STRING",
+            "values": [
+                {
+                    "id": "1138938",
+                    "name": "Heburn",
+                    "results": 33
+                },
+                {
+                    "id": "6143429",
+                    "name": "Thuya",
+                    "results": 7
+                },
+                {
+                    "id": "6111344",
+                    "name": "Meliné",
+                    "results": 6
+                },
+                {
+                    "id": "3764968",
+                    "name": "Las Margaritas",
+                    "results": 4
+                },
+                {
+                    "id": "12355238",
+                    "name": "Acryfine",
+                    "results": 4
+                },
+                {
+                    "id": "410974",
+                    "name": "Gadnic",
+                    "results": 2
+                },
+                {
+                    "id": "12355395",
+                    "name": "Cuvage",
+                    "results": 2
+                },
+                {
+                    "id": "276243",
+                    "name": "Genérica",
+                    "results": 1
+                },
+                {
+                    "id": "13511051",
+                    "name": "CyP",
+                    "results": 1
+                },
+                {
+                    "id": "12355387",
+                    "name": "Cherimoya",
+                    "results": 1
+                }
+            ]
+        }
+    ],
+    "paging": {
+        "limit": 1,
+        "offset": 0,
+        "total": 66
+    }
+}

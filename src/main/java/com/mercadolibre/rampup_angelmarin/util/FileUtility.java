@@ -17,6 +17,11 @@ public class FileUtility {
             throw new IllegalArgumentException (String.format( "no existe el directorio de trabajo %s ",workDirectory));
         }
 
+        if (folder.listFiles().length == 0) {
+            throw new IllegalArgumentException(
+                String.format("No se encontraron files en el directorio de  trabajo %s ", workDirectory));
+        }
+
        return folder.listFiles();
 
     }
